@@ -9,11 +9,14 @@ This project includes the fundamentals of React such as...
 1. Components
 2. JSX
 3. Props (proptypes, defaultprops, etc)
-4. State (Component & App Level)
-5. Styling
-6. Handling Events
-7. Lists & Keys
-8. Forms
-9. Context API
-10. HTTP Requests
-11. Fade Animation with Framer Motion
+4. Hooks such as useState, useEffect
+5. State (Component & App Level)
+6. Styling
+7. Handling Events
+8. Lists & Keys
+9. Forms
+10. Fade Animation with Framer Motion
+11. Context API
+12. HTTP Requests
+13. Run server and client concurrently using npm concurrently
+
