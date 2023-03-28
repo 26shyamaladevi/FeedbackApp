@@ -1,4 +1,4 @@
-import {v4 as uuidv4} from 'uuid'
+
 import {createContext, useState,useEffect} from 'react'
 
 const FeedbackContext = createContext()
@@ -17,17 +17,24 @@ export const FeedbackProvider = ({children}) => {
 
      //Fetch Feedback from Backend
      const fetchFeedback = async() => {
-        const response = await fetch(`http://localhost:5000/feedback?_sort=id&_order=desc`)
+        const response = await fetch(`/feedback?_sort=id&_order=desc`)
         const data = await response.json()
         setFeedback(data)
         setIsLoading(false)
      }
 
      //Add Feedback
-     const addFeedback = (newFeedback)=>{
-        newFeedback.id = uuidv4();
-        console.log(newFeedback)
-        setFeedback([newFeedback,...feedback])
+     const addFeedback = async (newFeedback) => {
+        const response = await fetch('/feedback',{
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(newFeedback)
+        })
+        const data = await response.json()
+        
+        await setFeedback([data,...feedback])
     }
 
     //editFeedback
@@ -40,20 +47,29 @@ export const FeedbackProvider = ({children}) => {
     }
 
     //updateFeedback
-    const updateFeedback = (id, updtItem)=>{
+    const updateFeedback = async (id, updtItem)=>{
+        const response =await fetch(`/feedback/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updtItem)
+        })
+        const data = await response.json()
         
         setFeedback(
             feedback.map((item)=>
-            (item.id === id ? {...item, ...updtItem}: item)
+            (item.id === id ? {...item, ...data} : item)
 
-        ))
+            ))
 
     }
 
     //Delete Feedback
-    const deleteFeedback = (id)=> {
+    const deleteFeedback = async (id) => {
         if(window.confirm('Are you sure you want to delete?'))
         {
+            await fetch(`/feedback/${id}`, {method: 'DELETE'})
             setFeedback(feedback.filter((item)=> item.id !== id))
         }
         
