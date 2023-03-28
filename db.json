@@ -1,19 +1,19 @@
 {
-    "feedback":[
-        {
-            "id":1,
-            "rating": 10,
-            "text": "This is feedbacl item 1 from backend"
-        },
-        {
-            "id":2,
-            "rating": 8,
-            "text": "This is feedbacl item 2 from backend"
-        },
-        {
-            "id":3,
-            "rating": 7,
-            "text": "This is feedbacl item 3 from backend"
-        }
-    ]
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

@@ -1,7 +1,6 @@
 {
   "name": "feedback-app",
   "version": "0.1.0",
-  "main":"api/server.js",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -15,16 +14,14 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "uuid": "^9.0.0",
-    "web-vitals": "^2.1.4",
-    "json-server": "^0.17.0"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    
-    "server": "node api/server.js",
+    "server": "json-server --watch db.json --port 5000",
     "dev": "concurrently \"npm run server\" \"npm start\" "
   },
   "eslintConfig": {
